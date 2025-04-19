@@ -14,6 +14,10 @@ const reviewSchema=new Schema({
         type:Date,
         default: Date.now()
     },
+    listing: {  // THIS IS CRUCIAL
+        type: Schema.Types.ObjectId,
+        ref: 'Listing'
+    }
 });
 
 module.exports=mongoose.model("Review",reviewSchema);
