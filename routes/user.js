@@ -1,25 +1,26 @@
-const express=require("express");
-const router=express.Router();
-const User=require("../models/user.js");
+const express = require("express");
+const router = express.Router();
+const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 
-router.get("/signup",(req,res)=>{
+router.get("/signup", (req, res) => {
     res.render("users/signup.ejs");
 });
 
-router.post("/signup",wrapAsync(async(req,res)=>{
-    try{
-        let {username,email,password}=req.body;
-        const newUser=new User({email,username});
-        registeredUser=await User.register(newUser,password);
+router.post("/signup", wrapAsync(async (req, res) => {
+    try {
+        let { username, email, password } = req.body;
+        const newUser = new User({ email, username });
+        registeredUser = await User.register(newUser, password);
         console.log(registeredUser);
-        req.flash("success","Welcome to Wanderlust!")
+        req.flash("success", "Welcome to Wanderlust!")
         return res.redirect("/listing");
-    }catch(err){
-        req.flash("error",err.message);
+    } catch (err) {
+        req.flash("error", err.message);
         return res.redirect("/signup");
     }
-    
-}));
 
-module.exports=router;
+})
+);
+
+module.exports = router;
