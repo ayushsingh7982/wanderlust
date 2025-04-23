@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const passportLocalMongoose = require("passport-local-mongoose"); // Fixed typo
+const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
     email: {
         type: String,
         required: true,
-        unique: true  // Added unique to prevent duplicate emails
+        unique: true
     }
 });
 
-// Add the plugin to the schema (not to User, which doesn't exist yet)
-userSchema.plugin(passportLocalMongoose, {
-    // Optional configuration options would go here
-    // usernameField: 'email' // if you want email as username
-});
+userSchema.plugin(passportLocalMongoose);
 
-// Now create and export the model
+// Create and export the model in one step
 module.exports = mongoose.model('User', userSchema);

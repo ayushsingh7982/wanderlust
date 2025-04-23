@@ -39,11 +39,12 @@ router.get("/new", isLoggedIn, (req, res) => {
 //Show Route
 router.get("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const listing = await Listing.findById(id).populate("reviews");
+    const listing = await Listing.findById(id).populate("reviews").populate("owner");
     if (!listing) {
         req.flash("error", "Listing you requested does not exist!");
         return res.redirect("/listing");
     }
+    console.log(listing);
     res.render("listings/show.ejs", { listing });
 }));
 
@@ -53,6 +54,9 @@ router.post("/", isLoggedIn,
     validateListing,
     wrapAsync(async (req, res, next) => {
         const newListing = new Listing(req.body.listing);
+
+        newListing.owner = req.user._id;
+
         await newListing.save();
         req.flash("success", "New Listing Added!");
         res.redirect("/listing");
@@ -83,6 +87,7 @@ router.put("/:id", isLoggedIn, validateListing, wrapAsync(async (req, res) => {
 }));
 
 //Delete Route
+
 router.delete("/:id", isLoggedIn, wrapAsync(async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
