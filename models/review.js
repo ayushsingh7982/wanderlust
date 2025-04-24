@@ -17,7 +17,13 @@ const reviewSchema=new Schema({
     listing: {  // THIS IS CRUCIAL
         type: Schema.Types.ObjectId,
         ref: 'Listing'
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref:"User",
     }
 });
+
+
 
 module.exports=mongoose.model("Review",reviewSchema);
