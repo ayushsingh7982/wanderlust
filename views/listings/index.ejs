@@ -16,11 +16,12 @@
                 class="card-img-top"
                 src="<%= listing.image.url %>"
                 alt="<%= listing.title %>"
-                style="height: 200px; object-fit: cover;"
+                style="height: 20rem"
               />
+              <div class="card-img-overlay"></div>
               <div class="card-body">
-                <h5 class="card-title"><%= listing.title %></h5>
                 <p class="card-text">
+                  <b><%= listing.title %></b><br>
                   ₹<%= listing.price.toLocaleString("en-IN") %> / night
                 </p>
                 <p class="card-text text-muted">
