@@ -9,12 +9,8 @@ const listingSchema = new Schema({
     },
     description: String,
     image: {
+        url: String,
         filename: String,
-        url: {
-            type: String,
-            default: "https://www.pixelstalk.net/wp-content/uploads/2016/06/HD-images-of-nature-download.jpg",
-            set: (v) => v === "" ? "https://www.pixelstalk.net/wp-content/uploads/2016/06/HD-images-of-nature-download.jpg" : v,
-        }
     },
     price: Number,
     location: String,
