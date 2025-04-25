@@ -28,7 +28,7 @@ module.exports.showListing = async (req, res) => {
         return res.redirect("/listing");
     }
     console.log(listing);
-    res.render("listings/show.ejs", { listing });
+    res.render("listings/show.ejs", { listing,mapApiKey : process.env.MAPTILER_API_KEY });
 };
 
 module.exports.createListing = async (req, res, next) => {
