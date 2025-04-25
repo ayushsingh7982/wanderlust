@@ -62,7 +62,7 @@ async function main() {
     const store = MongoStore.create({
       client: mongoose.connection.getClient(), // Reuse existing connection
       crypto: {
-        secret: process.env.SESSION_SECRET || "mysupersecretcode"
+        secret: process.env.SESSION_SECRET
       },
       touchAfter: 24 * 3600
     });
@@ -75,7 +75,7 @@ async function main() {
 }
 
 const sessionOptions={
-  secret: "mysupersecretcode",
+  secret: process.env.SESSION_SECRET,
   resave:false,
   saveUninitialized:true,
   cookie:{
