@@ -46,19 +46,33 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-
-const store = MongoStore.create({
-  mongoUrl: dbUrl,  // Must be a valid MongoDB connection string
-  crypto: {
-    secret: "mysupersecretcode", // Should ideally use process.env.SESSION_SECRET
-  },
-  touchAfter: 24*3600
-});
-
-store.on("error", (err) => {
-  console.error("MongoDB Session Store Error:", err);
-  // Consider adding process.exit(1) for critical errors
-});
+// Replace your current connection code with this:
+async function main() {
+  try {
+    await mongoose.connect(dbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,  // 5 second timeout
+      socketTimeoutMS: 45000,        // 45 second socket timeout
+      connectTimeoutMS: 10000        // 10 second connection timeout
+    });
+    console.log("Connected to MongoDB Atlas");
+    
+    // Only create session store after successful connection
+    const store = MongoStore.create({
+      client: mongoose.connection.getClient(), // Reuse existing connection
+      crypto: {
+        secret: process.env.SESSION_SECRET || "mysupersecretcode"
+      },
+      touchAfter: 24 * 3600
+    });
+    
+    return store;
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  }
+}
 
 const sessionOptions={
   secret: "mysupersecretcode",
