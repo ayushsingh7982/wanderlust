@@ -1,129 +1,50 @@
 <% layout('layouts/boilerplate') -%>
 
-<style>
-  #filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .filter {
-    text-align: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-  }
-
-  .filter:hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-
-  .filter p {
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-  }
-
-  .tax-info {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .tax-toggle {
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    height: 3.5rem;
-    padding: 1rem;
-    margin-left: 5rem;
-    display: flex;
-    align-items: center;
-    background-color: #f8f9fa;
-  }
-
-  .form-switch .form-check-input {
-    cursor: pointer;
-    width: 3em;
-    height: 1.5em;
-  }
-
-  .form-check-label {
-    margin-left: 0.5rem;
-    font-weight: 500;
-  }
-
-  .card {
-    transition: transform 0.2s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .card-img-top {
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .card:hover .card-img-top {
-    transform: scale(1.03);
-  }
-
-  .card-body {
-    padding: 1.25rem;
-  }
-
-  .card-text {
-    margin-bottom: 0;
-  }
-</style>
-
 <div class="container-fluid mt-4">
   <div class="filters" id="filters">
-    <div class="filter">
-      <div><i class="fa-solid fa-fire fa-lg"></i></div>
-      <p>Trending</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-bed fa-lg"></i></div>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-mountain-city fa-lg"></i></div>
-      <p>Iconic cities</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-mountain fa-lg"></i></div>
-      <p>Mountains</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-brands fa-fort-awesome fa-lg"></i></div>
-      <p>Castles</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-regular fa-snowflake fa-lg"></i></div>
-      <p>Arctic</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-campground fa-lg"></i></div>
-      <p>Camping</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-cow fa-lg"></i></div>
-      <p>Farms</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-igloo fa-lg"></i></div>
-      <p>Domes</p>
-    </div>
-    <div class="filter">
-      <div><i class="fa-solid fa-ship fa-lg"></i></div>
-      <p>Boats</p>
+    <div class="filter-scroller">
+      <div class="filter-container">
+        <div class="filter">
+          <div><i class="fa-solid fa-fire fa-lg"></i></div>
+          <p>Trending</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-bed fa-lg"></i></div>
+          <p>Rooms</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain-city fa-lg"></i></div>
+          <p>Iconic cities</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain fa-lg"></i></div>
+          <p>Mountains</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-brands fa-fort-awesome fa-lg"></i></div>
+          <p>Castles</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-regular fa-snowflake fa-lg"></i></div>
+          <p>Arctic</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-campground fa-lg"></i></div>
+          <p>Camping</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-cow fa-lg"></i></div>
+          <p>Farms</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-igloo fa-lg"></i></div>
+          <p>Domes</p>
+        </div>
+        <div class="filter">
+          <div><i class="fa-solid fa-ship fa-lg"></i></div>
+          <p>Boats</p>
+        </div>
+      </div>
     </div>
 
     <div class="tax-toggle">
