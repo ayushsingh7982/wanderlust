@@ -25,3 +25,14 @@ git clone https://github.com/ayushsingh7982/wanderlust.git
 cd wanderlust
 npm install
 ```
+
+Create a .env file and add your MongoDB connection string:
+```bash
+DB_URL=your_mongodb_atlas_url
+```
+
+Run the project:
+```bash
+node app.js
+```
+
