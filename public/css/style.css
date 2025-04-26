@@ -144,4 +144,54 @@ display: flex;
   padding-right: 0;
 }
 
-/* Maps */
+/* collapse btn */
+
+  /* Mobile view styles */
+  @media (max-width: 991.98px) {
+    #navbarNavAltMarkup {
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    #navbarNavAltMarkup{
+      font-weight: bolder;
+    }
+
+    #navbarNavAltMarkup .navbar-nav {
+      flex-direction: column !important;
+      width: 100%;
+    }
+    #navbarNavAltMarkup .ms-auto {
+      margin-left: 0 !important;
+      margin-top: 20px;
+    }
+  }
+  /* Desktop view styles */
+  @media (min-width: 992px) {
+    #navbarNavAltMarkup {
+      display: flex !important;
+      flex-basis: auto;
+    }
+  }
+
+/* Display taxes */
+
+  /* Mobile-specific adjustments */
+  @media (max-width: 576px) {
+    .flexSwitchCheckDefault {
+      padding: 8px 0;
+    }
+    .form-check-input {
+      transform: scale(0.9); /* Slightly smaller toggle on mobile */
+    }
+    .form-check-label {
+      font-size: 0.9rem; /* Slightly smaller text */
+    }
+  }
