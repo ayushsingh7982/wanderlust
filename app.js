@@ -50,12 +50,11 @@ app.use(express.static(path.join(__dirname, "public")));
 async function main() {
   try {
     await mongoose.connect(dbUrl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000,  // 5 second timeout
-      socketTimeoutMS: 45000,        // 45 second socket timeout
-      connectTimeoutMS: 10000        // 10 second connection timeout
+      socketTimeoutMS: 45000,         // 45 second socket timeout
+      connectTimeoutMS: 10000         // 10 second connection timeout
     });
+
     console.log("Connected to MongoDB Atlas");
     
     // Only create session store after successful connection
@@ -92,6 +91,14 @@ app.get("/", (req, res) => {
   res.redirect("/listing")
 });
 
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'privacy.html'));  // Serve the privacy.html file
+});
+
+app.get('/terms', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'terms.html'));  // Serve the terms.html file
+});
+
 
 
 app.use(session(sessionOptions));
@@ -111,14 +118,7 @@ app.use((req,res,next)=>{
   next();
 })
 
-// app.get("/demouser",async(req,res)=>{
-//   let fakeUser=new User({
-//     email:"student@gmail.com",
-//     username:"delta-student",
-//   });
-//   let registeredUser=await User.register(fakeUser,"helloworld");
-//   res.send(registeredUser);
-// })
+
 
 // Route Mounting (using singular 'listing' consistently)
 app.use("/listing", listingRouter);
